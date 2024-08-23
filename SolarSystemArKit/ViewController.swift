@@ -21,10 +21,18 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // dimensions are in meters
       //  let myBox = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0.01)
-        let mySphere = createSphere(radius: 0.1, content: "sun.png", vector: SCNVector3(0,0.2,-1))
+      //  let mySphere = createSphere(radius: 0.1, content: "sun.png", vector: SCNVector3(0,0.2,-1))
+        
+        let world = createSphere(radius: 0.1, content: "earth.png", vector: SCNVector3(0,0.2,-1))
+        let mars = createSphere(radius: 0.08, content: "mars.png", vector: SCNVector3(0.5,0.2,-1))
+        let venus = createSphere(radius: 0.09, content: "venus.png", vector: SCNVector3(-0.5,0.2,-1))
+        
+        
         
         sceneView.automaticallyUpdatesLighting = true
-        sceneView.scene.rootNode.addChildNode(mySphere)
+        sceneView.scene.rootNode.addChildNode(venus)
+        sceneView.scene.rootNode.addChildNode(world)
+        sceneView.scene.rootNode.addChildNode(mars)
 
         
         
