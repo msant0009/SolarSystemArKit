@@ -20,23 +20,33 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.delegate = self
         
         // dimensions are in meters
-        let myBox = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0.01)
+      //  let myBox = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0.01)
+        let mySphere = createSphere(radius: 0.1, content: "sun.png", vector: SCNVector3(0,0.2,-1))
+        
+        sceneView.automaticallyUpdatesLighting = true
+        sceneView.scene.rootNode.addChildNode(mySphere)
+
+        
+        
+    }
+    
+    func createSphere(radius: CGFloat, content:String, vector:SCNVector3) -> SCNNode {
+        
+        let mySphere = SCNSphere(radius: radius)
         
         let boxMaterial = SCNMaterial()
         
-        boxMaterial.diffuse.contents = UIImage(named: "art.scnassets/grass.png")
+        boxMaterial.diffuse.contents = UIImage(named: "art.scnassets/\(content)")
         
-        myBox.materials = [boxMaterial]
+        mySphere.materials = [boxMaterial]
         
         let node = SCNNode()
         
-        node.position = SCNVector3(0, 0.1,-0.5)
+        node.position = vector
         
-        node.geometry = myBox
+        node.geometry = mySphere
         
-        sceneView.scene.rootNode.addChildNode(node)
-        
-        
+        return node
         
         
     }
