@@ -19,14 +19,26 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Set the view's delegate
         sceneView.delegate = self
         
-        // Show statistics such as fps and timing information
-        sceneView.showsStatistics = true
+        // dimensions are in meters
+        let myBox = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0.01)
         
-        // Create a new scene
-        let scene = SCNScene(named: "art.scnassets/ship.scn")!
+        let boxMaterial = SCNMaterial()
         
-        // Set the scene to the view
-        sceneView.scene = scene
+        boxMaterial.diffuse.contents = UIImage(named: "art.scnassets/grass.png")
+        
+        myBox.materials = [boxMaterial]
+        
+        let node = SCNNode()
+        
+        node.position = SCNVector3(0, 0.1,-0.5)
+        
+        node.geometry = myBox
+        
+        sceneView.scene.rootNode.addChildNode(node)
+        
+        
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
