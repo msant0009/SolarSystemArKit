@@ -28,8 +28,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let venus = createSphere(radius: 0.09, content: "venus.png", vector: SCNVector3(-0.5,0.2,-1))
         
         
-        
         sceneView.automaticallyUpdatesLighting = true
+        
         sceneView.scene.rootNode.addChildNode(venus)
         sceneView.scene.rootNode.addChildNode(world)
         sceneView.scene.rootNode.addChildNode(mars)
